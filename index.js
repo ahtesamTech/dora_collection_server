@@ -6,7 +6,7 @@ const authRoutes = require('./routes/authRoutes');
 
 const app = express();
 var corsOptions = {
-    origin: ['http://localhost:5173','http://localhost:5174'],
+    origin: ['http://localhost:5173','http://localhost:5174', 'https://dora-collection-bd.web.app'],
     optionsSuccessStatus: 200,
     credentials: true
   }
