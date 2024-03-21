@@ -1,5 +1,6 @@
 const Order = require('../models/orderModel');
 const OrderQuery = require('../models/orderQuery');
+const db = require('../config')
 
 const orderController = {
     saveOrder: async (req, res) => {
@@ -35,7 +36,26 @@ const orderController = {
             console.error('Error retrieving customer orders:', error);
             res.status(500).json({ success: false, error: 'Internal server error' });
         }
+    },
+
+
+
+
+    updateOrderStatus : (req, res) => {
+        const { orderId, status } = req.body;
+    
+        // Update order status in the database
+        db.query('UPDATE orders SET status = ? WHERE order_id = ?', [status, orderId], (error, results) => {
+            if (error) {
+                console.error('Error updating order status:', error);
+                return res.status(500).json({ error: 'Internal server error' });
+            }
+    
+            // Send success response
+            res.json({ message: 'Order status updated successfully' });
+        });
     }
+
 
 };
 

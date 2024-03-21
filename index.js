@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const bodyParser = require('body-parser');
 const orderRoutes = require('./routes/orderRoutes');
 const productRoutes = require('./routes/productRoutes');
 const authRoutes = require('./routes/authRoutes');
@@ -12,6 +13,8 @@ var corsOptions = {
   }
 app.use(cors(corsOptions)); 
 app.use(express.json()); 
+// Middleware
+
 
 // Use order routes
 app.use('/api/orders', orderRoutes);
@@ -22,9 +25,11 @@ app.use('/api/view-order', orderRoutes);
 // Use the product router
 app.use('/api/product', productRoutes);
 
-
+// auth route
 
 app.use('/api/auth', authRoutes);
+
+
 
 
 const PORT = process.env.PORT || 3000;

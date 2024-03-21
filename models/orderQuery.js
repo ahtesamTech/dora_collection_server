@@ -8,7 +8,9 @@ const OrderQuery = {
                 SELECT 
                     c.customer_id,
                     c.customer_name,
+                    c.customer_number,
                     c.customer_address,
+                    c.customer_payment_number,
                     o.order_id,
                     o.total_amount,
                     o.delivery_charge,
@@ -45,16 +47,19 @@ const OrderQuery = {
             // Process each row in the query result
             result.forEach(row => {
                 // Extract customer details from the row
-                const { customer_id, customer_name, customer_address, order_id, total_amount,delivery_charge,status, order_date  } = row;
+                const { customer_id, customer_name,customer_number, customer_address,customer_payment_number, order_id, total_amount,delivery_charge,status, order_date  } = row;
 
                 // Create or update the customer's entry in the customerOrders object
                 if (!customerOrders[customer_id]) {
                     customerOrders[customer_id] = {
                         customer_id,
                         customer_name,
+                        customer_number,
                         customer_address,
+                        customer_payment_number,
                         total_amount,
                         delivery_charge,
+                        order_id,
                         status,
                         order_date,
                         orders_product: []
@@ -66,7 +71,7 @@ const OrderQuery = {
 
                 // Add the order details to the customer's orders array
                 customerOrders[customer_id].orders_product.push({
-                    order_id,
+                    
                     order_detail_id,
                     product_id,
                     product_title,

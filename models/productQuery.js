@@ -17,7 +17,6 @@ const ProductQuery = {
                     p.category,
                     p.thumbnail,
                     p.video,
-                    pi.img_id,
                     pi.product_id,
                     pi.image_url
                 FROM
@@ -66,7 +65,7 @@ const ProductQuery = {
                 }
 
                 // Extract order details from the row
-                const { product_id, image_url } = row;
+                const {  image_url } = row;
 
                 // Add the order details to the customer's orders array
                 productImage[id].images.push( image_url );
@@ -100,7 +99,6 @@ const ProductQuery = {
                     p.category,
                     p.thumbnail,
                     p.video,
-                    pi.img_id,
                     pi.product_id,
                     pi.image_url
                 FROM
