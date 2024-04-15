@@ -1,13 +1,12 @@
 const express = require('express');
 const cors = require('cors');
-const bodyParser = require('body-parser');
 const orderRoutes = require('./routes/orderRoutes');
 const productRoutes = require('./routes/productRoutes');
 const authRoutes = require('./routes/authRoutes');
 
 const app = express();
 var corsOptions = {
-    origin: ['http://localhost:5173','http://localhost:5174', 'https://dora-collection-bd.web.app'],
+    origin: ['https://doracollection.xyz', 'https://dora-collection-bd.web.app'],
     optionsSuccessStatus: 200,
     credentials: true
   }
